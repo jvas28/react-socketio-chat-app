@@ -1,14 +1,15 @@
 import React from 'react';
 import './App.scss';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { MuiThemeProvider, createMuiTheme, makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-import { Login, Chat } from './pages';
-import { makeStyles } from '@material-ui/core/styles';
+
 import Grid from '@material-ui/core/Grid';
 
 import teal from '@material-ui/core/colors/teal';
+import { Login, Chat } from './pages';
+
 const theme = createMuiTheme({
   palette: { type: 'dark', primary: teal }
 });
@@ -40,7 +41,7 @@ function App() {
                   <Switch location={location}>
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/chat" component={Chat} />
-                    <Route render={() => <Redirect to={'/login'} />} />
+                    <Route render={() => <Redirect to="/login" />} />
                   </Switch>
                 </CSSTransition>
               </TransitionGroup>
