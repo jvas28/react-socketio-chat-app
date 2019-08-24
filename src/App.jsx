@@ -1,20 +1,21 @@
 import React from 'react';
-import './App.scss';
 import { MuiThemeProvider, createMuiTheme, makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-
 import Grid from '@material-ui/core/Grid';
-
 import teal from '@material-ui/core/colors/teal';
 import { Login, Chat } from './pages';
+import './App.scss';
 
 const theme = createMuiTheme({
-  palette: { type: 'dark', primary: teal }
+  palette: {
+    type: 'dark',
+    primary: teal,
+  },
 });
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   root: {
     height: '100vh',
     backgroundImage: 'url(/res/img/bg-lights.jpeg)',
@@ -24,8 +25,8 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '100%'
-  }
+    width: '100%',
+  },
 }));
 function App() {
   const classes = useStyles();

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -12,6 +11,7 @@ import Link from '@material-ui/core/Link';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import { func, shape } from 'prop-types';
 
 function Copyright() {
   return (
@@ -117,7 +117,9 @@ const Login = (props) => {
 };
 
 Login.propTypes = {
-  history: PropTypes.func,
+  history: shape({
+    push: func,
+  }).isRequired,
 };
 
 export default Login;
