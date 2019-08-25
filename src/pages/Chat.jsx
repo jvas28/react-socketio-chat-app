@@ -37,9 +37,9 @@ const Chat = () => {
       socket.on('command', ({ author, command }) => {
         dispatch(actions.addCommand(author, command));
       });
-      setTimeout(() => {
+      setInterval(() => {
         socket.emit('command', {});
-      }, 1 * 1000);
+      }, 40 * 1000);
     }
   });
   return (

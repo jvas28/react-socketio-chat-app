@@ -1,9 +1,7 @@
 const INITIAL_STATE = {
   auth: {
-    // authenticated: false,
-    // user: null
-    authenticated: true,
-    user: 'Julio'
+    authenticated: false,
+    user: null
   },
   messages: []
 };
