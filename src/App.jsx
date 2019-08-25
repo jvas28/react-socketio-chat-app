@@ -1,18 +1,20 @@
 import React from 'react';
-import { MuiThemeProvider, createMuiTheme, makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import teal from '@material-ui/core/colors/teal';
+import { MuiThemeProvider, createMuiTheme, makeStyles } from '@material-ui/core/styles';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 import { Login, Chat } from './pages';
 import './App.scss';
 
 const theme = createMuiTheme({
   palette: {
     type: 'dark',
-    primary: teal,
-  },
+    primary: teal
+  }
 });
 
 const useStyles = makeStyles(() => ({
@@ -25,8 +27,8 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '100%',
-  },
+    width: '100%'
+  }
 }));
 function App() {
   const classes = useStyles();
@@ -34,21 +36,23 @@ function App() {
     <MuiThemeProvider theme={theme}>
       <CssBaseline />
       <Grid container component="main" className={classes.root}>
-        <Router>
-          <Route
-            render={({ location }) => (
-              <TransitionGroup>
-                <CSSTransition key={location.key} classNames="fade" timeout={300}>
-                  <Switch location={location}>
-                    <Route exact path="/login" component={Login} />
-                    <Route exact path="/chat" component={Chat} />
-                    <Route render={() => <Redirect to="/login" />} />
-                  </Switch>
-                </CSSTransition>
-              </TransitionGroup>
-            )}
-          />
-        </Router>
+        <Provider store={store}>
+          <Router>
+            <Route
+              render={({ location }) => (
+                <TransitionGroup>
+                  <CSSTransition key={location.key} classNames="fade" timeout={300}>
+                    <Switch location={location}>
+                      <Route exact path="/login" component={Login} />
+                      <Route exact path="/chat" component={Chat} />
+                      <Route render={() => <Redirect to="/login" />} />
+                    </Switch>
+                  </CSSTransition>
+                </TransitionGroup>
+              )}
+            />
+          </Router>
+        </Provider>
       </Grid>
     </MuiThemeProvider>
   );
