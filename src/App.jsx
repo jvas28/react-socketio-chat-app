@@ -13,8 +13,8 @@ import './App.scss';
 const theme = createMuiTheme({
   palette: {
     type: 'dark',
-    primary: teal
-  }
+    primary: teal,
+  },
 });
 
 const useStyles = makeStyles(() => ({
@@ -27,8 +27,8 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '100%'
-  }
+    width: '100%',
+  },
 }));
 function App() {
   const classes = useStyles();

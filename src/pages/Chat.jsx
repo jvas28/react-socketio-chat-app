@@ -15,8 +15,8 @@ const useStyles = makeStyles(() => ({
     width: '100vw',
     height: '100vh',
     display: 'flex',
-    flexDirection: 'column-reverse'
-  }
+    flexDirection: 'column-reverse',
+  },
 }));
 const Chat = () => {
   const isAuthenticated = useSelector(({ auth }) => auth.authenticated);

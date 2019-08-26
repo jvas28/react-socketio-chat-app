@@ -15,19 +15,19 @@ const useStyles = makeStyles(() => ({
     width: '100%',
     minWidth: 300,
     marginBottom: 10,
-    alignSelf: 'end'
+    alignSelf: 'end',
   },
   input: {
     marginLeft: 8,
-    flex: 1
+    flex: 1,
   },
   iconButton: {
-    padding: 10
+    padding: 10,
   },
   divider: {
     height: 28,
-    margin: 4
-  }
+    margin: 4,
+  },
 }));
 
 const ChatBox = (props) => {
@@ -59,6 +59,6 @@ const ChatBox = (props) => {
   );
 };
 ChatBox.propTypes = {
-  onSendMessage: func.isRequired
+  onSendMessage: func.isRequired,
 };
 export default ChatBox;

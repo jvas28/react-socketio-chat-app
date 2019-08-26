@@ -4,7 +4,7 @@
     "es6": true
   },
   "parser": "babel-eslint",
-  "extends": ["airbnb", "prettier"],
+  "extends": ["airbnb"],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -26,8 +26,6 @@
   "plugins": ["react", "prettier"],
   "rules": {
     "prettier/prettier": ["warn"],
-    "object-curly-newline": [
-      "warn", {  "consistent": true }
-    ]
+    "object-curly-newline": ["warn", { "consistent": true }]
   }
 }

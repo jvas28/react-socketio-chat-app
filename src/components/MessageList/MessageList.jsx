@@ -12,15 +12,15 @@ const useStyles = makeStyles(() => ({
   list: {
     width: '100%',
     maxHeight: 'calc(100vh - 60px)',
-    overflowY: 'scroll'
+    overflowY: 'scroll',
   },
   item: {
     borderRadius: '10px',
-    margin: '10px 0'
+    margin: '10px 0',
   },
   mine: {
-    background: '#00ecb15c'
-  }
+    background: '#00ecb15c',
+  },
 }));
 const MessageItem = (props) => {
   const { user, author, message, itemClass } = props;
@@ -38,7 +38,7 @@ MessageItem.propTypes = {
   user: string.isRequired,
   author: string.isRequired,
   message: string.isRequired,
-  itemClass: string.isRequired
+  itemClass: string.isRequired,
 };
 
 const MessageList = (props) => {
@@ -60,7 +60,7 @@ const MessageList = (props) => {
         if (type === 'command') {
           const {
             author,
-            command: { type: WidgetType, data: widgetData }
+            command: { type: WidgetType, data: widgetData },
           } = data;
           return <Widget type={WidgetType} data={widgetData} author={author} />;
         }
@@ -76,11 +76,11 @@ MessageList.propTypes = {
       type: string,
       data: shape({
         author: string,
-        message: string
-      })
-    })
+        message: string,
+      }),
+    }),
   ).isRequired,
-  user: string.isRequired
+  user: string.isRequired,
 };
 
 export default MessageList;
