@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/react-socketio-chat-app/static/css/main.7a33ba05.chunk.css",
+    "main.js": "/react-socketio-chat-app/static/js/main.9ba5d81b.chunk.js",
+    "main.js.map": "/react-socketio-chat-app/static/js/main.9ba5d81b.chunk.js.map",
+    "runtime~main.js": "/react-socketio-chat-app/static/js/runtime~main.44e56ef7.js",
+    "runtime~main.js.map": "/react-socketio-chat-app/static/js/runtime~main.44e56ef7.js.map",
+    "static/js/2.c2d3640a.chunk.js": "/react-socketio-chat-app/static/js/2.c2d3640a.chunk.js",
+    "static/js/2.c2d3640a.chunk.js.map": "/react-socketio-chat-app/static/js/2.c2d3640a.chunk.js.map",
+    "index.html": "/react-socketio-chat-app/index.html",
+    "precache-manifest.37b4f519e5da155e3b8825fa698647d0.js": "/react-socketio-chat-app/precache-manifest.37b4f519e5da155e3b8825fa698647d0.js",
+    "service-worker.js": "/react-socketio-chat-app/service-worker.js",
+    "static/css/main.7a33ba05.chunk.css.map": "/react-socketio-chat-app/static/css/main.7a33ba05.chunk.css.map"
+  }
+}
