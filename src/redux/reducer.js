@@ -14,10 +14,14 @@ const addMessage = (state = INITIAL_STATE, data) => ({
   ...state,
   messages: [...state.messages, { type: 'message', data }],
 });
-const addCommand = (state = INITIAL_STATE, data) => ({
-  ...state,
-  messages: [...state.messages, { type: 'command', data }],
-});
+let commandKey = 0;
+const addCommand = (state = INITIAL_STATE, data) => {
+  commandKey += 1;
+  return {
+    ...state,
+    messages: [...state.messages, { type: 'command', data: { ...data, key: commandKey } }],
+  };
+};
 const handlers = {
   AUTHENTICATE: authenticate,
   ADD_MESSAGE: addMessage,

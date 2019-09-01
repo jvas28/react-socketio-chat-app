@@ -39,7 +39,7 @@ const Chat = () => {
       });
       setInterval(() => {
         socket.emit('command', {});
-      }, 40 * 1000);
+      }, 20 * 1000);
     }
   });
   return (

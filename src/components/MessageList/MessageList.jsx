@@ -54,15 +54,22 @@ const MessageList = (props) => {
             itemClass.push(classes.mine);
           }
           return (
-            <MessageItem user={user} author={author} message={message} itemClass={itemClass} />
+            <MessageItem
+              key={user + message}
+              user={user}
+              author={author}
+              message={message}
+              itemClass={itemClass}
+            />
           );
         }
         if (type === 'command') {
           const {
             author,
             command: { type: WidgetType, data: widgetData },
+            key,
           } = data;
-          return <Widget type={WidgetType} data={widgetData} author={author} />;
+          return <Widget key={key} type={WidgetType} data={widgetData} author={author} />;
         }
         return null;
       })}

@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { string, shape, oneOf, number, arrayOf } from 'prop-types';
+import { string, shape, number, arrayOf, oneOfType } from 'prop-types';
 import ListItem from '@material-ui/core/ListItem';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -33,6 +33,7 @@ const DateWidget = (props) => {
     5: 'Friday',
     6: 'Saturday',
   };
+  const [day, setDay] = useState();
   const { data: date } = props;
   const dates = [];
   const dateObject = new Date(date);
@@ -49,32 +50,71 @@ const DateWidget = (props) => {
   }
   return (
     <Box component="fieldset" mb={3} borderColor="transparent">
-      <Typography component="legend">Please choose a date: </Typography>
-      {dates.map(({ name }) => (
-        <Button variant="outlined">{name}</Button>
+      {!day && <Typography component="legend">Please choose a date: </Typography>}
+      {dates.map(({ name, n }) => (
+        <Button
+          key={n}
+          color={day === n ? 'primary' : 'default'}
+          variant="outlined"
+          disabled={day ? day !== n : false}
+          onClick={() => {
+            setDay(n);
+          }}
+        >
+          {name}
+        </Button>
       ))}
+      {day && <Typography component="legend">Thanks for selecting a date. </Typography>}
     </Box>
   );
 };
 DateWidget.propTypes = {
   data: dateShape.isRequired,
 };
-const RateWidget = () => (
-  <Box component="fieldset" mb={3} borderColor="transparent">
-    <Typography component="legend">Please, rate our service: </Typography>
-    <Rating name="simple-controlled" value={0} />
-  </Box>
-);
+const RateWidget = () => {
+  const [rate, setRate] = useState(0);
+  return (
+    <Box component="fieldset" mb={3} borderColor="transparent">
+      {rate === 0 && <Typography component="legend">Please, rate our service: </Typography>}
+      <Rating
+        name="simple-controlled"
+        value={rate}
+        readOnly={rate > 0}
+        onChange={(event, newValue) => {
+          if (rate === 0) {
+            setRate(newValue);
+          }
+        }}
+      />
+      {rate > 0 && <Typography component="legend">Thanks for rating!</Typography>}
+    </Box>
+  );
+};
 RateWidget.propTypes = {};
-const CompleteWidget = () => (
-  <Box component="fieldset" mb={3} borderColor="transparent">
-    <Typography component="legend">Is your requirement complete? </Typography>
-    <Button color="primary" variant="outlined">
-      Yes
-    </Button>
-    <Button variant="outlined">No</Button>
-  </Box>
-);
+const CompleteWidget = () => {
+  const [complete, setComplete] = useState(null);
+  return (
+    <Box component="fieldset" mb={3} borderColor="transparent">
+      <Typography component="legend">Is your requirement complete? </Typography>
+      <Button
+        color={complete === true ? 'primary' : 'default'}
+        disabled={complete !== true && complete !== null}
+        variant="outlined"
+        onClick={() => (complete === null ? setComplete(true) : () => null)}
+      >
+        Yes
+      </Button>
+      <Button
+        color={complete === false ? 'primary' : 'default'}
+        disabled={complete !== false && complete !== null}
+        variant="outlined"
+        onClick={() => (complete === null ? setComplete(false) : () => null)}
+      >
+        No
+      </Button>
+    </Box>
+  );
+};
 CompleteWidget.propTypes = {};
 const MAPS_API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_TOKEN;
 
@@ -120,8 +160,8 @@ const Widget = (props) => {
 };
 
 Widget.propTypes = {
-  type: oneOf(['map', 'rate', 'complete', 'date']).isRequired,
-  data: oneOf([dateShape, rateShape, completeShape, mapShape]).isRequired,
+  type: string.isRequired,
+  data: oneOfType([dateShape, rateShape, completeShape, mapShape]).isRequired,
 };
 
 export default Widget;
