@@ -31,32 +31,32 @@ const useStyles = makeStyles((theme) => ({
     width: '90%',
     maxWidth: '500px',
     background: 'rgba(56, 56, 56, 0.72)',
-    margin: '0 auto'
+    margin: '0 auto',
   },
   avatar: {
     width: '80px',
     height: '80px',
     margin: '10px auto',
-    background: 'transparent'
+    background: 'transparent',
   },
   icon: {
     fontSize: '3rem',
-    color: 'white'
+    color: 'white',
   },
   form: {
-    padding: '0 10px'
+    padding: '0 10px',
   },
   header: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: '20px'
+    padding: '20px',
   },
   title: {
     marginTop: '35px',
     fontWeight: 700,
     fontSize: 20,
-    color: 'white'
+    color: 'white',
   },
   buttonProgress: {
     color: green[500],
@@ -64,12 +64,12 @@ const useStyles = makeStyles((theme) => ({
     top: '50%',
     left: '50%',
     marginTop: -12,
-    marginLeft: -12
+    marginLeft: -12,
   },
   wrapper: {
     margin: theme.spacing(1),
-    position: 'relative'
-  }
+    position: 'relative',
+  },
 }));
 const Login = () => {
   const isAuthenticated = useSelector(({ auth }) => auth.authenticated);

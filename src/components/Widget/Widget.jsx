@@ -11,8 +11,8 @@ import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles({
   card: {
-    maxWidth: '100%'
-  }
+    maxWidth: '100%',
+  },
 });
 
 const dateShape = string;
@@ -20,7 +20,7 @@ const rateShape = arrayOf(number);
 const completeShape = arrayOf(string);
 const mapShape = shape({
   lat: number,
-  lng: number
+  lng: number,
 });
 
 const DateWidget = (props) => {
@@ -31,7 +31,7 @@ const DateWidget = (props) => {
     3: 'Wednesday',
     4: 'Thursday',
     5: 'Friday',
-    6: 'Saturday'
+    6: 'Saturday',
   };
   const { data: date } = props;
   const dates = [];
@@ -57,55 +57,50 @@ const DateWidget = (props) => {
   );
 };
 DateWidget.propTypes = {
-  data: dateShape.isRequired
+  data: dateShape.isRequired,
 };
-const RateWidget = () => {
-  return (
-    <Box component="fieldset" mb={3} borderColor="transparent">
-      <Typography component="legend">Please, rate our service: </Typography>
-      <Rating name="simple-controlled" value={0} />
-    </Box>
-  );
-};
+const RateWidget = () => (
+  <Box component="fieldset" mb={3} borderColor="transparent">
+    <Typography component="legend">Please, rate our service: </Typography>
+    <Rating name="simple-controlled" value={0} />
+  </Box>
+);
 RateWidget.propTypes = {};
-const CompleteWidget = () => {
-  return (
-    <Box component="fieldset" mb={3} borderColor="transparent">
-      <Typography component="legend">Is your requirement complete? </Typography>
-      <Button color="primary" variant="outlined">
-        Yes
-      </Button>
-      <Button variant="outlined">No</Button>
-    </Box>
-  );
-};
+const CompleteWidget = () => (
+  <Box component="fieldset" mb={3} borderColor="transparent">
+    <Typography component="legend">Is your requirement complete? </Typography>
+    <Button color="primary" variant="outlined">
+      Yes
+    </Button>
+    <Button variant="outlined">No</Button>
+  </Box>
+);
 CompleteWidget.propTypes = {};
 const MAPS_API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_TOKEN;
 
 const MapWidget = (props) => {
   const {
-    data: { lat, lng }
+    data: { lat, lng },
   } = props;
-  const width = window.innerWidth;
+  const width = window.innerWidth - 40;
   return (
     <Box component="fieldset" mb={3} borderColor="transparent">
       <img
         alt="map"
         style={{ width: '100%', height: '300px' }}
-        src={`https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=13&size=${width -
-          40}x300&key=${MAPS_API_KEY}&markers=${lat},${lng}`}
+        src={`https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=13&size=${width}x300&key=${MAPS_API_KEY}&markers=${lat},${lng}`}
       />
     </Box>
   );
 };
 MapWidget.propTypes = {
-  data: mapShape.isRequired
+  data: mapShape.isRequired,
 };
 const mapWidgets = {
   date: DateWidget,
   map: MapWidget,
   rate: RateWidget,
-  complete: CompleteWidget
+  complete: CompleteWidget,
 };
 
 const Widget = (props) => {
@@ -126,7 +121,7 @@ const Widget = (props) => {
 
 Widget.propTypes = {
   type: oneOf(['map', 'rate', 'complete', 'date']).isRequired,
-  data: oneOf([dateShape, rateShape, completeShape, mapShape]).isRequired
+  data: oneOf([dateShape, rateShape, completeShape, mapShape]).isRequired,
 };
 
 export default Widget;
