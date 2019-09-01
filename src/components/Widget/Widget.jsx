@@ -80,7 +80,7 @@ const CompleteWidget = () => {
   );
 };
 CompleteWidget.propTypes = {};
-const MAPS_API_KEY = 'AIzaSyDPQa9zNJBs66eJgeZrd3sbRDXzGwoUELs';
+const MAPS_API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_TOKEN;
 
 const MapWidget = (props) => {
   const {
